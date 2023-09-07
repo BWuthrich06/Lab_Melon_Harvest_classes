@@ -19,7 +19,8 @@ class MelonType:
         self.is_seedless = is_seedless
         self.is_bestseller = is_bestseller
         
-        
+    def __repr__(self):
+        return f'<Name:{self.name} Code: {self.code}>'   
 
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
@@ -37,6 +38,7 @@ def make_melon_types():
     """Returns a list of current melon types."""
 
     all_melon_types = []
+    
     musk= MelonType("musk", "Muskmelon", 1998, 'green', True, True)
     musk.add_pairing("mint")
     all_melon_types.append(musk)
@@ -66,13 +68,13 @@ def print_pairing_info(melon_types):
     for melon in melon_types:
         print(f"{melon.name} pairs with")
         for pairing in melon.pairings:
-            print(f" {pairing}")
-            
+            print(f" - {pairing}")
+        print()      
         
 
 
 all_types = make_melon_types()
-# print_pairing_info(all_types)
+print_pairing_info(all_types)
 
 # melon_types = make_melon_types()
 # print_pairing_info(melon_types)
@@ -85,7 +87,7 @@ def make_melon_type_lookup(melon_types):
 
     for melon in melon_types:
         if melon.code not in melon_code:
-            melon_code[melon.code] = melon.name
+            melon_code[melon.code] = melon
 
     return melon_code
 print(make_melon_type_lookup(all_types))
