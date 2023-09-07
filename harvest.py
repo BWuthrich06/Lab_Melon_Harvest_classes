@@ -72,7 +72,7 @@ def print_pairing_info(melon_types):
 
 
 all_types = make_melon_types()
-print_pairing_info(all_types)
+# print_pairing_info(all_types)
 
 # melon_types = make_melon_types()
 # print_pairing_info(melon_types)
@@ -82,6 +82,7 @@ def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
     
     melon_code = {}
+
     for melon in melon_types:
         if melon.code not in melon_code:
             melon_code[melon.code] = melon.name
