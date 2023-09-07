@@ -74,7 +74,7 @@ def print_pairing_info(melon_types):
 
 
 all_types = make_melon_types()
-print_pairing_info(all_types)
+# print_pairing_info(all_types)
 
 # melon_types = make_melon_types()
 # print_pairing_info(melon_types)
@@ -90,7 +90,7 @@ def make_melon_type_lookup(melon_types):
             melon_code[melon.code] = melon
 
     return melon_code
-print(make_melon_type_lookup(all_types))
+# print(make_melon_type_lookup(all_types))
 
 
 ############
@@ -104,28 +104,57 @@ class Melon:
         self.melon_type = melon_type
         self.shape_rating = shape_rating
         self.color_rating = color_rating
-        self.field = field_harvested
+        self.field_harvested = field_harvested
         self.harvested_by = harvested_by
-    
+
+    def __repr__(self):
+        return f'<Melon Type: {self.melon_type}\n Shape Rating: {self.shape_rating}\n>'  
+     
     def is_sellable(self):
         """Checks to see if melon is sellable."""
-        if self.shape_rating and self.color_rating > 5 and self.field != 3:
+        if self.shape_rating and self.color_rating > 5 and self.field_harvested != 3:
             return True
         else:
             return False
     
-   
     
     
-
-
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
 
-    # Fill in the rest
+    
+    melon_1 = Melon("yw", 8, 7, 2, "Sheila")
+    melon_2 = Melon("yw", 3, 4, 2, "Sheila")
+    melon_3 = Melon("yw", 9 ,8,3,"Sheila")
+    melon_4 = Melon("cas", 10, 6, 35, "Sheila")
+    melon_5 = Melon("cren", 8, 9, 35, "Michael")
+    melon_6 = Melon("cren", 8, 2, 35, "Micheal")
+    melon_7 = Melon("cren", 8, 2, 35, "Michael")
+    melon_8 = Melon("musk", 6, 7, 4, "Michael")
+    melon_9 = Melon("yw", 7, 10, 3, "Sheila")
+    
+    melon_list = [melon_1, melon_2, melon_3, melon_4,
+                 melon_5, melon_6, melon_7, melon_8,
+                 melon_9,
+                 ]
+    
+    return melon_list
+
+list_of_melons = (make_melons(all_types))
 
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
+    for melon in melons:
+        person_harvested = f"Harvested by: {melon.harvested_by}"
+        field_num = f"on Field {melon.field_harvested}"
+        sellable = melon.is_sellable()
+        if sellable == True:
+            sellable = "can be sold"
+        else:
+            sellable = "is not sellable"
 
-    # Fill in the rest
+        print(f"{person_harvested} {field_num} {sellable}")
+        
+        
+get_sellability_report(list_of_melons)
