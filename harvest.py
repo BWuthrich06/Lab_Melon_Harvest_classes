@@ -92,7 +92,7 @@ def make_melon_type_lookup(melon_types):
     return melon_code
 # print(make_melon_type_lookup(all_types))
 
-melon_dict = make_melon_type_lookup(all_types)
+melon_dict = make_melon_type_lookup(all_types)  #assigns dictionary
 ############
 # Part 2   #
 ############
@@ -155,7 +155,8 @@ def get_sellability_report(melons):
         else:
             sellable = "is not sellable"
 
-        print(f"{person_harvested} {field_num} {sellable} / {melon.melon_type}")
+        print(f"{person_harvested} {field_num} {sellable} / {melon.melon_type}") # melon_type will output melon_dict in line 104 which displays what will put in the repr in the melontype class
         
         
 get_sellability_report(list_of_melons)
+ # 
