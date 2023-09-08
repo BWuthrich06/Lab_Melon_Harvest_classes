@@ -92,7 +92,7 @@ def make_melon_type_lookup(melon_types):
     return melon_code
 # print(make_melon_type_lookup(all_types))
 
-
+melon_dict = make_melon_type_lookup(all_types)
 ############
 # Part 2   #
 ############
@@ -101,7 +101,7 @@ def make_melon_type_lookup(melon_types):
 class Melon:
     """A melon in a melon harvest."""
     def __init__(self, melon_type, shape_rating, color_rating, field_harvested, harvested_by):
-        self.melon_type = melon_type
+        self.melon_type = melon_dict[melon_type] # Look up the actual MelonType instance from your dictionary
         self.shape_rating = shape_rating
         self.color_rating = color_rating
         self.field_harvested = field_harvested
@@ -141,6 +141,7 @@ def make_melons(melon_types):
     return melon_list
 
 list_of_melons = (make_melons(all_types))
+print(list_of_melons)
 
 
 def get_sellability_report(melons):
@@ -154,7 +155,7 @@ def get_sellability_report(melons):
         else:
             sellable = "is not sellable"
 
-        print(f"{person_harvested} {field_num} {sellable}")
+        print(f"{person_harvested} {field_num} {sellable} / {melon.melon_type}")
         
         
 get_sellability_report(list_of_melons)
